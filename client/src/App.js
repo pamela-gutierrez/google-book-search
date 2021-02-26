@@ -7,32 +7,42 @@ import "./App.css";
 
 function App() {
 
-    const [books, setBooks] = useState([]);
-    // const [search, setSearch] = useState("");
+  const [books, setBooks] = useState([]);
+  // const [search, setSearch] = useState("");
 
-    // useEffect(() => {
-    //   loadBooks();
-    // }, []);
-  
+  // useEffect(() => {
+  //   loadBooks();
+  // }, []);
 
-    // pass me to search form
-    function loadBooks(bookName) {
-      API.getBookList()
-        .then(() => {
-          API.getBooks(bookName).then((books) => {
-            setBooks(books);
-          });
-        })
-        .catch(err => console.log(err));
-    }
+
+  // pass me to search form
+  function loadBooks(event) {
+    var bookSearch = event.target.value
+    API.getBookList()
+      .then(() => {
+        API.getBooks(bookSearch).then((books) => {
+          setBooks(books);
+        });
+      })
+      .catch(err => console.log(err));
+  }
 
 
 
   return (
     <div>
       <NavBar />
-      <SearchForm />
-      <Results />
+      <SearchForm
+        loadBooks={loadBooks}
+      />
+      {books.map((book) => {
+        return <Results
+          title={book.title}
+          image={book.image}
+          author={book.author}
+          description={book.description}
+        />
+      })}
     </div>
   );
 }
