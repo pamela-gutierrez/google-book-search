@@ -1,6 +1,6 @@
 import React from "react";
 
-function Results(props) {
+function SavedResults(props) {
     return (
         <div className="container">
             <div className="card">
@@ -15,9 +15,11 @@ function Results(props) {
                     <img src={props.image} />
                     {/* <a href="#" className="card-link">Card link</a> */}
                     {/* <a href="#" className="card-link">Another link</a> */}
+                    <button className="btn btn-info">Un-Favorite</button>
+                    <a href={props.link} target="_blank"><button className="btn btn-info" >View</button></a>
                 </div>
             </div>
         </div>
     )
 }
-export default Results;
+export default SavedResults;
