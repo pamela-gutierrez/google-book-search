@@ -5,7 +5,8 @@ const savedBooksSchema = new Schema({
   title: { type: String, required: true },
   author: { type: String, required: true },
   body: String,
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  link: { type: String }
 });
 
 const savedBooks = mongoose.model("savedBooks", savedBooksSchema);

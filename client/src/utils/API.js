@@ -19,7 +19,8 @@ export default {
             title: book.volumeInfo.title,
             image: book.volumeInfo.imageLinks.thumbnail,
             author: book.volumeInfo.authors,
-            description: book.volumeInfo.description
+            description: book.volumeInfo.description,
+            link: book.volumeInfo.infoLink
             // firstname: user.name.first,
             // lastname: user.name.last,
             // fullname: user.name.first + " " + user.name.last,

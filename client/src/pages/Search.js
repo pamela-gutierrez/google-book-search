@@ -1,7 +1,9 @@
+// import axios from "axios";
 import React, { useState } from "react";
-import SearchForm from "../components/SearchForm"
-import Results from "../components/Results"
+import SearchForm from "../components/SearchForm";
+import SearchResults from "../components/SearchResults";
 import API from "../utils/API.js";
+import axiosRoutes from "../utils/axiosRoutes.js";
 
 
 
@@ -9,6 +11,7 @@ import API from "../utils/API.js";
 function Search() {
 
   const [books, setBooks] = useState([]);
+  // const [formObject, setFormObject] = useState({})
   // const [search, setSearch] = useState("");
 
   // useEffect(() => {
@@ -16,36 +19,48 @@ function Search() {
   // }, []);
 
 
-  // pass me to search form
-  function loadBooks(event) {
-    var bookSearch = event.target.value
-    API.getBookList()
-      .then(() => {
-        API.getBooks(bookSearch).then((books) => {
-          setBooks(books);
-        });
-      })
-      .catch(err => console.log(err));
-  }
+
+
+  function favoriteBook(data) {
+    axiosRoutes.saveBook({
+      title: data.title,
+      image: data.image,
+      author: data.author,
+      description: data.description,
+      link: data.link
+    })
+
+    // pass me to search form
+    function loadBooks(event) {
+      var bookSearch = event.target.value
+      API.getBookList()
+        .then(() => {
+          API.getBooks(bookSearch).then((books) => {
+            setBooks(books);
+          });
+        })
+        .catch(err => console.log(err));
+    }
 
 
 
-  return (
-    <div>
-      <SearchForm
-        loadBooks={loadBooks}
-      />
-      {books.map((book) => {
-        return <Results
-          title={book.title}
-          image={book.image}
-          author={book.author}
-          description={book.description}
+    return (
+      <div>
+        <SearchForm
+          loadBooks={loadBooks}
         />
-      })}
-    </div>
-  );
+        {books.map((book) => {
+          return <SearchResults
+            title={book.title}
+            image={book.image}
+            author={book.author}
+            description={book.description}
+            link={book.link}
+          />
+        })}
+      </div>
+    );
+  }
 }
-
 
 export default Search;
