@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SearchForm from "./components/SearchForm"
 import NavBar from "./components/NavBar"
 import Results from "./components/Results"
 import API from "./utils/API.js";
-import "./App.css";
-import Search from "./pages/Search.js"
-import Saved from "./pages/Saved.js"
 
 
-function App() {
+
+
+function Search() {
 
   const [books, setBooks] = useState([]);
   // const [search, setSearch] = useState("");
@@ -33,19 +32,21 @@ function App() {
 
 
   return (
-    <Router>
-      <div>
-        <NavBar />
-        <Switch>
-          <Route exact path="/" component={Search} />
-          {/* PAM I STARTED HERE */}
-          <Route exact path="/Saved" component={Saved} />
-        </Switch>
-      </div>
-    </Router>
-
+    <div>
+      <SearchForm
+        loadBooks={loadBooks}
+      />
+      {books.map((book) => {
+        return <Results
+          title={book.title}
+          image={book.image}
+          author={book.author}
+          description={book.description}
+        />
+      })}
+    </div>
   );
 }
 
 
-export default App;
+export default Search;
