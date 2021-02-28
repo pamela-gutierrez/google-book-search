@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongo": "^0.1.0",
-    "mongoose": "^5.11.18"
+    "mongoose": "^5.11.18",
+    "react-router-dom": "^5.2.0"
   }
 }

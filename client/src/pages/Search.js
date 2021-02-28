@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import SearchForm from "./components/SearchForm"
-import NavBar from "./components/NavBar"
-import Results from "./components/Results"
-import API from "./utils/API.js";
+import SearchForm from "../components/SearchForm"
+import Results from "../components/Results"
+import API from "../utils/API.js";
 
 
 
