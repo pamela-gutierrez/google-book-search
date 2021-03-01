@@ -33,7 +33,7 @@ function Search() {
   }
 
   return (
-    <div>
+    <div className="container-fluid">
       <SearchForm
         loadBooks={loadBooks}
       />

@@ -28,7 +28,7 @@ function Saved() {
   }
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       {booksDatabase.map((book, index) => {
         return <SavedResults
           id={book._id}

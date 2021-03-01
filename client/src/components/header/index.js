@@ -4,9 +4,9 @@ import "./index.css";
 function Header() {
 
     return (
-        <div class="header">
-            <h1>Header</h1>
-            <p>My supercool header</p>
+        <div className="header">
+            <h1>Search For Books</h1>
+            <p>Save Them to Your Favorites List </p>
         </div>
     );
 }
