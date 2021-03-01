@@ -26,7 +26,7 @@ function Search() {
     axiosRoutes.saveBook({
       title: data.title,
       image: data.image,
-      author: data.author,
+      author: data.author[0],
       description: data.description,
       link: data.link
     })
@@ -37,9 +37,10 @@ function Search() {
       <SearchForm
         loadBooks={loadBooks}
       />
-      {books.map((book) => {
-        return (<div>
+      {books.map((book, index) => {
+        return (
           <SearchResults
+            key={index}
             title={book.title}
             image={book.image}
             author={book.author}
@@ -47,7 +48,6 @@ function Search() {
             link={book.link}
             favoriteBook={favoriteBook}
           />
-        </div>
         )
       })}
     </div>

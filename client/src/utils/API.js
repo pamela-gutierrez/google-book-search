@@ -14,21 +14,24 @@ export default {
           // console.log(book.volumeInfo.authors)
           // console.log(book.volumeInfo.description)
           // console.log(book.volumeInfo.imageLinks.thumbnail)
+          if (book.volumeInfo.imageLinks === undefined) {
+            return {
+              title: book.volumeInfo.title,
+              image: "https://via.placeholder.com/130x200.png",
+              author: book.volumeInfo.authors,
+              description: book.volumeInfo.description,
+              link: book.volumeInfo.infoLink
+            };
+          } else {
+            return {
+              title: book.volumeInfo.title,
+              image: book.volumeInfo.imageLinks.thumbnail,
+              author: book.volumeInfo.authors,
+              description: book.volumeInfo.description,
+              link: book.volumeInfo.infoLink
+            };
+          }
 
-          return {
-            title: book.volumeInfo.title,
-            // image: book.volumeInfo.imageLinks.thumbnail,
-            author: book.volumeInfo.authors,
-            description: book.volumeInfo.description,
-            link: book.volumeInfo.infoLink
-            // firstname: user.name.first,
-            // lastname: user.name.last,
-            // fullname: user.name.first + " " + user.name.last,
-            // email: user.email,
-            // image: user.picture.large,
-            // phone: user.cell,
-            // dob: user.dob.date
-          };
         });
         resolve(results);
       }).catch((err) => reject(err));

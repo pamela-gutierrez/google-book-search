@@ -1,36 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axiosRoutes from "../utils/axiosRoutes.js";
 import SavedResults from "../components/SavedResults";
-// import API from "../utils/API.js";
-
-
 
 function Saved() {
 
   const [booksDatabase, setBooksDatabase] = useState([]);
 
+  useEffect(() => {
+    fetchBooks()
+  }, [])
 
   function fetchBooks() {
     axiosRoutes.getBooks()
       .then(res => {
         setBooksDatabase(res.data)
-          .catch(err => console.log(err))
       })
+      .catch(err => console.log(err))
   }
 
   function unFavoriteBook(id) {
+    console.log(id)
     axiosRoutes.deleteBook(id)
       .then(res => {
         fetchBooks(res.data)
-          .catch(err => console.log(err))
       })
+      .catch(err => console.log(err))
   }
 
   return (
     <div className="container">
-      {booksDatabase.map((book) => {
+      {booksDatabase.map((book, index) => {
         return <SavedResults
-          _id={book._id}
+          id={book._id}
+          key={index}
           title={book.title}
           image={book.image}
           author={book.author}
@@ -43,40 +45,4 @@ function Saved() {
   );
 }
 
-
 export default Saved;
-
-// const [books, setBooks] = useState([]);
-// // const [search, setSearch] = useState("");
-
-// // useEffect(() => {
-// //   loadBooks();
-// // }, []);
-
-
-// // pass me to search form
-// function loadBooks(event) {
-//   var bookSearch = event.target.value
-//   API.getBookList()
-//     .then(() => {
-//       API.getBooks(bookSearch).then((books) => {
-//         setBooks(books);
-//       });
-//     })
-//     .catch(err => console.log(err));
-// }
-
-
-{/* <div>
-<SearchForm
-  loadBooks={loadBooks}
-/>
-{books.map((book) => {
-  return <Results
-    title={book.title}
-    image={book.image}
-    author={book.author}
-    description={book.description}
-  />
-})}
-</div> */}
