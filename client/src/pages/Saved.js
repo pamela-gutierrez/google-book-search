@@ -7,31 +7,36 @@ import SavedResults from "../components/SavedResults";
 
 function Saved() {
 
-  const [booksDatabase, setbooksDatabase] = useState([]);
-  //   function fetchBooks() {
-  //     axiosRoutes.getBooks()
-  //       .then(res => {
-  //         setBooks(res.data)
-  //           .catch(err => console.log(err))
-  //       })
-  //   }
+  const [booksDatabase, setBooksDatabase] = useState([]);
 
-  // function unFavoriteBook(id) {
-  //   axiosRoutes.deleteBook(id)
-  //     .then(res => {
-  //       fetchBooks(res.data)
-  //         .catch(err => console.log(err))
-  //     })
-  // }
+
+  function fetchBooks() {
+    axiosRoutes.getBooks()
+      .then(res => {
+        setBooksDatabase(res.data)
+          .catch(err => console.log(err))
+      })
+  }
+
+  function unFavoriteBook(id) {
+    axiosRoutes.deleteBook(id)
+      .then(res => {
+        fetchBooks(res.data)
+          .catch(err => console.log(err))
+      })
+  }
+
   return (
     <div className="container">
       {booksDatabase.map((book) => {
         return <SavedResults
+          _id={book._id}
           title={book.title}
           image={book.image}
           author={book.author}
           description={book.description}
           link={book.link}
+          unFavoriteBook={unFavoriteBook}
         />
       })}
     </div>
