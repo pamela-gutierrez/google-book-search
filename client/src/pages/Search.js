@@ -29,38 +29,39 @@ function Search() {
       description: data.description,
       link: data.link
     })
-
-    // pass me to search form
-    function loadBooks(event) {
-      var bookSearch = event.target.value
-      API.getBookList()
-        .then(() => {
-          API.getBooks(bookSearch).then((books) => {
-            setBooks(books);
-          });
-        })
-        .catch(err => console.log(err));
-    }
-
-
-
-    return (
-      <div>
-        <SearchForm
-          loadBooks={loadBooks}
-        />
-        {books.map((book) => {
-          return <SearchResults
-            title={book.title}
-            image={book.image}
-            author={book.author}
-            description={book.description}
-            link={book.link}
-          />
-        })}
-      </div>
-    );
   }
+
+  // pass me to search form
+  function loadBooks(event) {
+    var bookSearch = event.target.value
+    API.getBookList()
+      .then(() => {
+        API.getBooks(bookSearch).then((books) => {
+          setBooks(books);
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+
+
+  return (
+    <div>
+      <SearchForm
+        loadBooks={loadBooks}
+      />
+      {books.map((book) => {
+        return <SearchResults
+          title={book.title}
+          image={book.image}
+          author={book.author}
+          description={book.description}
+          link={book.link}
+        />
+      })}
+    </div>
+  );
 }
+
 
 export default Search;
