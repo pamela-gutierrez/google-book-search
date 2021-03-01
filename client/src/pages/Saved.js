@@ -1,17 +1,19 @@
-import React from "react";
-import SavedResults from "../components/SavedResults"
-// import React, { useState } from "react";
+import React, { useState } from "react";
+import axiosRoutes from "../utils/axiosRoutes.js";
+import SavedResults from "../components/SavedResults";
 // import API from "../utils/API.js";
 
 
-const [books, setBooks] = useState([]);
 
 function Saved() {
+
+  const [booksDatabase, setBooksDatabase] = useState([]);
+
 
   function fetchBooks() {
     axiosRoutes.getBooks()
       .then(res => {
-        setBooks(res.data)
+        setBooksDatabase(res.data)
           .catch(err => console.log(err))
       })
   }
@@ -23,15 +25,18 @@ function Saved() {
           .catch(err => console.log(err))
       })
   }
+
   return (
     <div className="container">
-      {books.map((book) => {
-        return <SearchResults
+      {booksDatabase.map((book) => {
+        return <SavedResults
+          _id={book._id}
           title={book.title}
           image={book.image}
           author={book.author}
           description={book.description}
           link={book.link}
+          unFavoriteBook={unFavoriteBook}
         />
       })}
     </div>

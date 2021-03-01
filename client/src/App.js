@@ -12,16 +12,18 @@ import Saved from "./pages/Saved.js"
 function App() {
 
   return (
-    <Router>
-      <div>
-        <NavBar />
-        <Switch>
-          <Route exact path="/" component={Search} />
-          {/* PAM I STARTED HERE */}
-          <Route exact path="/Saved" component={Saved} />
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <Router>
+        <div>
+          <NavBar />
+          <Switch>
+            <Route exact path="/" component={Search} />
+            <Route exact path="/Saved" component={Saved} />
+          </Switch>
+        </div>
+      </Router>
+    </div>
+
 
   );
 }

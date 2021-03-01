@@ -5,7 +5,7 @@ export default {
   // Gets all books
   // these are keys and values 
   getBooks: function () {
-    return axios.get("/api/books");
+    return axios.get("/api/book");
   },
   // Gets the book with the given id
   // getBook: function (id) {
@@ -13,10 +13,11 @@ export default {
   // },
   // Deletes the Book with the given id
   deleteBook: function (id) {
-    return axios.delete("/api/books/" + id);
+    return axios.delete("/api/book/" + id);
   },
   // Saves a Book to the database
   saveBook: function (bookData) {
-    return axios.post("/api/books", bookData);
+    console.log("savebook")
+    return axios.post("/api/book", bookData);
   }
 };

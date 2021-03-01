@@ -1,21 +1,16 @@
 import React from "react";
+import axiosRoutes from "../../utils/axiosRoutes.js";
 
 function SavedResults(props) {
     return (
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    {/* title */}
                     <h5 className="card-title">{props.title}</h5>
-                    {/* author */}
                     <h5 className="card-title">{props.author}</h5>
-                    {/* description */}
                     <p className="card-text">{props.description}</p>
-                    {/* image */}
                     <img src={props.image} />
-                    {/* <a href="#" className="card-link">Card link</a> */}
-                    {/* <a href="#" className="card-link">Another link</a> */}
-                    <button className="btn btn-info">Un-Favorite</button>
+                    <button className="btn btn-info" onClick={() => props.unFavoriteBook(props.id)}>Save</button>
                     <a href={props.link} target="_blank"><button className="btn btn-info" >View</button></a>
                 </div>
             </div>
