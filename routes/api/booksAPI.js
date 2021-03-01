@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const booksController = require("../../controller/booksController");
-
+console.log("booksAPI")
 // Matches with "/api/posts"
 router
   .route("/")
