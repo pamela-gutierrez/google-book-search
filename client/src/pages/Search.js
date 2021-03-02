@@ -22,14 +22,27 @@ function Search() {
   }
 
   function favoriteBook(data) {
-    console.log(data)
-    axiosRoutes.saveBook({
+    console.log(data);
+    console.log(data.author)
+    var myBook = {
       title: data.title,
       image: data.image,
-      author: data.author[0],
+
       description: data.description,
       link: data.link
-    })
+    };
+    if (!myBook.description || !myBook.author[0]) {
+      if (!myBook.description) {
+        myBook.description = "No Description"
+      }
+      if (!data.author) {
+        myBook.author = "No Author"
+      }
+      else {
+        myBook.author = data.author[0]
+      }
+    }
+    axiosRoutes.saveBook(myBook)
   }
 
   return (
