@@ -1,8 +1,9 @@
 import React from "react";
+import "./index.css";
 
 function NavBar() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light sticky-top">
+        <nav className="navbar navbar-expand-lg navbar-dark sticky-top">
     <div className="container">
         <a className="navbar-brand important" href="/">Google Books</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
