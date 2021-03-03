@@ -31,7 +31,7 @@ function Search() {
       description: data.description,
       link: data.link
     };
-    if (!myBook.description || !myBook.author[0]) {
+    if (!myBook.description || !myBook.author) {
       if (!myBook.description) {
         myBook.description = "No Description"
       }
