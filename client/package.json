@@ -1,6 +1,9 @@
 {
   "name": "mern",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.15.4"
+  },
   "description": "Mern Demo",
   "private": true,
   "proxy": "http://localhost:3001/",
