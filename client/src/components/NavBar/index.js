@@ -13,7 +13,7 @@ function NavBar() {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link nav-sub" href="/">Search Books</a>
+                            <a className="nav-link nav-sub" href="/">Search Books</a>gi
                         </li>
                         <li className="nav-item">
                             <a className="nav-link nav-sub" href="/Saved">Saved Books</a>
