@@ -34,23 +34,4 @@ function App() {
 
 export default App;
 
-// const [books, setBooks] = useState([]);
-// // const [search, setSearch] = useState("");
-
-// // useEffect(() => {
-// //   loadBooks();
-// // }, []);
-
-
-// // pass me to search form
-// function loadBooks(event) {
-//   var bookSearch = event.target.value
-//   API.getBookList()
-//     .then(() => {
-//       API.getBooks(bookSearch).then((books) => {
-//         setBooks(books);
-//       });
-//     })
-//     .catch(err => console.log(err));
-// }
 
